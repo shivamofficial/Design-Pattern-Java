@@ -1,0 +1,28 @@
+Key Point:
+
+private static final Logger instance = new Logger();
+
+The instance is created at class loading time, even if nobody uses it.
+
+    Key Point:
+
+    private static Logger instance; (no final, no object yet)
+
+    In getInstance(), we check if (instance == null) and then create the object.
+
+
+    🔹 The Big Interview Point
+    Eager Singleton: Instance is created the moment the class is loaded (which happens when first referenced).
+
+    Lazy Singleton: Instance is created only inside the first getInstance() call.
+
+    The visible difference is timing:
+
+    With Eager, as soon as the class is referenced, the instance is created (even if you never use it later).
+
+    With Lazy, the instance creation is deferred until inside the if (instance == null) check.
+
+    🔹 Difference from Eager
+    In Eager: If you keep a static reference in MainApp, the constructor prints before main starts.
+
+    In Lazy: The constructor prints only when you explicitly call getInstance() — never earlier.

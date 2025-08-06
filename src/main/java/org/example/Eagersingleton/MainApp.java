@@ -1,4 +1,4 @@
-package org.example.singleton;
+package org.example.Eagersingleton;
 
 public class MainApp {
     public static void main(String[] args) {

@@ -1,8 +1,6 @@
-package org.example.singleton;
+package org.example.Eagersingleton;
 
-import java.awt.event.PaintEvent;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 

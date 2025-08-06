@@ -1,4 +1,4 @@
-package org.example.singleton;
+package org.example.Eagersingleton;
 
 public class UserRepository {
  private Logger logger=Logger.getInstance();
