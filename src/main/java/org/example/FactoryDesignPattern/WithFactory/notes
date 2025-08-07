@@ -1,0 +1,53 @@
+✅ GOAL:
+Let’s simulate a real-world change:
+➡️ Suppose the Sedan class is renamed to LuxurySedan.
+Now let's see:
+
+❌ What would happen without Factory
+
+✅ What happens with Factory
+❌ Without Factory (Painful)
+Original code:
+Car car = new Sedan();
+
+Now Sedan is renamed to LuxurySedan:
+
+Car car = new LuxurySedan();  // ❌ You must change this EVERYWHERE in the codebase
+
+➡️ Problem: You must manually go to every file/class where new Sedan() was written and change to new LuxurySedan().
+
+✅ With Factory (Clean & Easy)
+Step 1: Factory Code (you only change here):
+
+public class CarFactory {
+    public static Car getCar(String type) {
+        if (type.equalsIgnoreCase("sedan")) {
+            return new LuxurySedan();  // 👈 Only changed here!
+        } else if (type.equalsIgnoreCase("suv")) {
+            return new SUV();
+        }
+        return null;
+    }
+}
+
+Step 2: Client code (no change required!):
+Car car1 = CarFactory.getCar("sedan");
+car1.drive();
+
+🎯 ADVANTAGE (EXPLAIN IN INTERVIEW):
+"Factory centralizes object creation logic. So if an implementation class changes (like Sedan → LuxurySedan),
+we update only the factory, not all the places that use that object.
+It improves maintainability, flexibility, and reduces tight coupling."
+
+🔁 BONUS: You can even change logic dynamically!
+In the Factory, you can change object creation based on:
+
+Config file
+
+Environment
+
+External API
+
+if (ConfigReader.get("car.type").equals("sedan")) {
+    return new LuxurySedan();
+}
